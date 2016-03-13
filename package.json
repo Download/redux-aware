@@ -1,0 +1,66 @@
+{
+  "name": "redux-aware",
+  "version": "1.0.0-alpha.1",
+  "description": "Decorators to create redux-aware APIs",
+  "main": "lib/redux-aware.min.js",
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0"
+    ],
+    "plugins": [
+      "transform-decorators-legacy",
+      "transform-class-properties"
+    ]
+  },
+  "scripts": {
+    "build-umd": "webpack --context src --output-path lib --output-filename redux-aware.umd.js --output-library-target umd \"./redux-aware.jsx\" ",
+    "build-min": "webpack -p --context src --output-path lib --output-filename redux-aware.min.js --output-library-target umd \"./redux-aware.jsx\" ",
+    "build": "npm run build-umd && npm run build-min",
+    "build-test": "webpack --context src --output-path lib --output-filename redux-aware.spec.js \"./redux-aware.spec.jsx\" && mocha \"lib/redux-aware.spec.js\" ",
+    "test": "mocha --require src/test-helper.js \"src/**/*spec.jsx\"",
+    "test-dev": "webpack-dev-server --context src \"mocha!./redux-aware.spec.jsx\" --output-filename redux-aware.spec.js --content-base test --port 8888",
+    "release": "npm run build && npm run build-test"
+  },
+  "keywords": [
+    "redux",
+    "redux-aware"
+  ],
+  "author": {
+    "name": "Stijn de Witt",
+    "email": "StijnDeWitt@hotmail.com",
+    "url": "http://StijnDeWitt.com"
+  },
+  "copyright": "Copyright 2016 by [Stijn de Witt](http://StijnDeWitt.com). Some rights reserved.",
+  "license": "CC-BY-4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/download/redux-aware.git"
+  },
+  "bugs": {
+    "url": "https://github.com/download/redux-aware/issues"
+  },
+  "homepage": "http://github.com/download/redux-aware",
+  "devDependencies": {
+    "babel-core": "^6.3.26",
+    "babel-loader": "^6.2.1",
+    "babel-plugin-transform-class-properties": "^6.4.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "babel-register": "^6.3.13",
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "mocha-loader": "^0.7.1",
+    "path": "^0.12.7",
+    "picolog": "^1.0.0",
+    "redux": "^3.0.5",
+    "redux-thunk": "^1.0.3",
+    "source-map-support": "^0.4.0",
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {}
+}
